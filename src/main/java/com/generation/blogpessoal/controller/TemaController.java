@@ -25,7 +25,7 @@ import com.generation.blogpessoal.repository.TemaRepository;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TemaController {
 
-	@Autowired
+	@Autowired //ele cria o obj e instancia
 	private TemaRepository repository;
 
 	// METODO DE GET

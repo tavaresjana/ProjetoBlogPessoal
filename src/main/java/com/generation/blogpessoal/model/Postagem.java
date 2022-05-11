@@ -26,7 +26,7 @@ public class Postagem {
 	@Id
 	
 	// equivalente ao auto_increment no mysql
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //com esse atributo ele vai se tornar uma PRIMARY KEY
 	public Long id;
 	
 	// define que o campo é obrigatório
@@ -52,6 +52,19 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
 	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
+	
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	public Tema getTema() {
 		return tema;
 	}
