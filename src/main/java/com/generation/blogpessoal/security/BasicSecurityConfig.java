@@ -23,6 +23,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 	//teremos 2 metódos p entrar na nossa API. Cadastrando pelo banco ou usuário em memória para teste, ultimo caso abaixo.
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+		auth.userDetailsService(userDetailsService);
 		auth.inMemoryAuthentication()
 		.withUser("root")
 		.password(passwordEncoder().encode("root"))
