@@ -1,5 +1,6 @@
 package com.generation.blogpessoal.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,5 +19,6 @@ tem mais de uma possível
 	
 	// quando temos mais de uma possivel resposta, usamos o optional para preparar a função pra receber mais de um resultado 
 	public Optional<Usuario> findByUsuario(String usuario);
+	public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
 
 }

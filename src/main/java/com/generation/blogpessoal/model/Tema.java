@@ -20,16 +20,17 @@ public class Tema {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
-	
+
 	@NotNull
 	public String descricao;
-	
+
 	// relacionamento do tipo um pra muitos (um tema para varias postagens)
-	// o cascade serve para que todas as atualizações ou deleções de um tema, afetem todas as postagens atrelhadas a ele 
-	@OneToMany(mappedBy="tema", cascade = CascadeType.ALL)
+	// o cascade serve para que todas as atualizações ou deleções de um tema, afetem
+	// todas as postagens atrelhadas a ele
+	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("tema")
 	private List<Postagem> postagem;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -53,4 +54,4 @@ public class Tema {
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
-	}
+}

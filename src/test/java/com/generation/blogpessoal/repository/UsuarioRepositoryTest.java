@@ -1,4 +1,4 @@
-package com.generation.blogpessoal.repository;
+/*package com.generation.blogpessoal.repository;
 
 import java.util.Optional;
 
@@ -54,3 +54,4 @@ public class UsuarioRepositoryTest {
 		repository.deleteAll();
 	}
 }
+*/

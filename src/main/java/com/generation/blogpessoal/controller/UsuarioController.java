@@ -39,9 +39,15 @@ public class UsuarioController {
 	@GetMapping("/all")
 	public ResponseEntity<List<Usuario>> getAll() {
 		return ResponseEntity.ok(usuarioRepository.findAll());
-
 	}
-
+	
+	/*metódo adicionado*/
+	@GetMapping("/{id}")
+	public ResponseEntity<Usuario> getById(@PathVariable long id) {
+		return usuarioRepository.findById(id).map(resp -> ResponseEntity.ok(resp))
+		.orElse(ResponseEntity.notFound().build());
+	}
+	
 	@PostMapping("/logar")
 	public ResponseEntity<UsuarioLogin> login(@RequestBody Optional<UsuarioLogin> user) {
 		return usuarioService.autenticaUsuario(user).map(resposta -> ResponseEntity.ok(resposta))
@@ -55,7 +61,7 @@ public class UsuarioController {
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 	
-	@PutMapping
+	@PutMapping("/atualizar") 
 	public ResponseEntity<Usuario> put(@Valid @RequestBody Usuario usuario) {
 		usuario.setSenha(usuarioService.criptografarSenha(usuario.getSenha()));
 		return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.save(usuario));
